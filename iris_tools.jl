@@ -1,4 +1,4 @@
-# Code for Video 2.3: 
+# Code for Video 2.3:
 # The "iris" dataset contains 150 measurements on 3 species
 # of Iris flowers, namely I. setosa, I. versicolor and I. virginica.
 # The columns 1 to 4 respectively contain the:
@@ -18,10 +18,10 @@ export read_file, counting_species, length_matrix, calculations_setosa, to_strin
 fname = "iris.txt"
 species = ["I. setosa", "I. versicolor", "I. virginica"]
 
-irism = [] # will contain the measurements of the dataset, each array element is a line containing 4 measurements 
+irism = [] # will contain the measurements of the dataset, each array element is a line containing 4 measurements
 iris = [] # temporary array  to contain the names of iris specimens
-lengths = [] # matrix with the length measurements 
-species_freq = Dict{ASCIIString, Int64}()
+lengths = [] # matrix with the length measurements
+species_freq = Dict{String, Int64}()
 
 ### types:
 ###################################################
@@ -30,7 +30,7 @@ type Iris
     sepal_width::Float64
     petal_length::Float64
     petal_width::Float64
-    species::ASCIIString
+    species::String
 end
 
 type Setosa
@@ -75,8 +75,8 @@ function counting_species()
     end
     # count species in dictionary species-freq:
     for species in iris
-        haskey(species_freq, species) ? 
-            species_freq[species] += 1 : 
+        haskey(species_freq, species) ?
+            species_freq[species] += 1 :
             species_freq[species] = 1
     end
     # sort the the keys and print out the frequencies:
@@ -99,8 +99,8 @@ function length_matrix()
         arr_mlength = [parse(Float64, str) for str in arr_temp]
         # transpose arr_mlength to obtain a 1 x 4 array
         # and append it vertically to lengths
-        lengths_temp = vcat(lengths_temp, arr_mlength') 
-        # we must indicate that we mean the variable lengths 
+        lengths_temp = vcat(lengths_temp, arr_mlength')
+        # we must indicate that we mean the variable lengths
         # defined in global scope by prepending it with global
     end
     # cut off the first row which contained arbitrary values
@@ -131,10 +131,10 @@ function show(i::Iris)
 end
 
 function to_string(i::Iris)
-    "This $(i.species) has measurements: \n" * 
+    "This $(i.species) has measurements: \n" *
     "\tSepal length: $(i.sepal_length)\n" *
-    "\tSepal width: $(i.sepal_width)\n" * 
-    "\tPetal length: $(i.petal_length)\n" * 
+    "\tSepal width: $(i.sepal_width)\n" *
+    "\tPetal length: $(i.petal_length)\n" *
     "\tPetal width: $(i.petal_width)\n"
 end
 

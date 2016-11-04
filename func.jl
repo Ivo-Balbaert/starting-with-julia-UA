@@ -9,5 +9,5 @@ end
 
 show(calculation())
 
-# julia> @time include("1_5_func.jl")
+# julia> @time include("func.jl")
 # 460301.1496469646  0.063448 seconds (2.00 M allocations: 30.646 MB, 2.94% gc time)

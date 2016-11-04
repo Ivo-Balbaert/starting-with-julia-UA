@@ -9,5 +9,5 @@ end
 
 show(calculation())
 
-# julia> @time include("1_5_func_better.jl")
+# julia> @time include("func_better.jl")
 # 459310.8032323998  0.026413 seconds (2.48 k allocations: 124.761 KB)
